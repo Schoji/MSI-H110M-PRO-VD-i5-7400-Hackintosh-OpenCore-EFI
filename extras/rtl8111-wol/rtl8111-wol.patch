@@ -1,0 +1,28 @@
+diff --git a/RealtekRTL8111/RealtekRTL8111.cpp b/RealtekRTL8111/RealtekRTL8111.cpp
+index 0106b07..145b4d6 100644
+--- a/RealtekRTL8111/RealtekRTL8111.cpp
++++ b/RealtekRTL8111/RealtekRTL8111.cpp
+@@ -798,6 +798,8 @@ IOReturn RTL8111::setWakeOnMagicPacket(bool active)
+     DebugLog("setWakeOnMagicPacket() ===>\n");
+ 
+     if (wolCapable) {
++        if (active)
++            linuxData.wol_opts |= WAKE_MAGIC;   /* WoL patch: arm magic packet regardless of boot-time HW bits */
+         linuxData.wol_enabled = active ? WOL_ENABLED : WOL_DISABLED;
+         wolActive = active;
+         
+diff --git a/RealtekRTL8111/RealtekRTL8111Hardware.cpp b/RealtekRTL8111/RealtekRTL8111Hardware.cpp
+index d24698a..c310cc3 100644
+--- a/RealtekRTL8111/RealtekRTL8111Hardware.cpp
++++ b/RealtekRTL8111/RealtekRTL8111Hardware.cpp
+@@ -602,7 +602,9 @@ bool RTL8111::initRTL8111()
+             break;
+     }
+     /* Set wake on LAN support. */
+-    wolCapable = wolCapable && wol;
++    /* WoL patch: WoL capability only from PCI PME (D3cold). The Config3/5 WoL bits are
++     * cleared by our own shutdown path, so after a warm restart they would disable WoL forever. */
++    (void)wol;
+     
+ #ifdef DEBUG
+     
