@@ -90,7 +90,8 @@ The fix is already in this EFI: `EFI/BOOT/.contentVisibility` containing `Disabl
 
 - `CFG Lock = Enabled`;
 - `Restore after AC Power Loss = Power Off`;
-- `Resume By PCI-E/USB = Disabled`.
+- `Resume By PCI-E/USB = Disabled`;
+- `XHCI Hand-off = Disabled` and `Windows 8.1/10 WHQL Support = Disabled` (CSM back on). Neither one stopped macOS from booting, but both were noticed only later.
 
 macOS `pmset` was reset at the same time (`hibernatemode 3`, `standby 1`). Go through [1. BIOS](01-bios.md) and the [power settings](05-post-install.md#power-settings) again after any such change. The boot order with OpenCore survived.
 

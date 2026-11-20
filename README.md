@@ -4,6 +4,8 @@ This repo contains a working OpenCore EFI and a step-by-step guide for running m
 
 Sleep and Wake-on-LAN work. On this platform, sleep only works thanks to a fix for WhateverGreen developed for this build (`-igfxdpllfix`).
 
+![OpenCore picker (OpenCanopy, GoldenGate theme)](images/screens/opencore-picker.png)
+
 ## Hardware
 
 | Part | Model |
@@ -81,7 +83,7 @@ A DVI-to-HDMI adapter or cable is fine.
 EFI/                 OpenCore EFI, ready to copy (placeholder serials, see docs/03)
 docs/                the guide
 extras/              sleepkeeper and netkeeper daemons, network driver patch
-images/bios/         BIOS screenshots
+images/              BIOS screenshots and the boot picker
 ```
 
 ## Before you use it
