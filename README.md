@@ -15,7 +15,7 @@ This repo contains a working OpenCore EFI and a step-by-step guide for running m
 
 Sleep and Wake-on-LAN work. On this platform, sleep only works thanks to a fix for WhateverGreen developed for this build (`-igfxdpllfix`).
 
-![OpenCore picker (OpenCanopy, GoldenGate theme)](images/screens/opencore-picker.png)
+![macOS 15 Sequoia on the MSI H110M PRO-VD with an i5-7400 and Intel HD 630](images/screens/desktop.jpg)
 
 ## Hardware
 
@@ -72,6 +72,8 @@ A DVI-to-HDMI adapter or cable is fine.
 | RestrictEvents | 1.1.6 |
 
 ## Guide
+
+![OpenCore picker (OpenCanopy, GoldenGate theme), Debian on a second disk](images/screens/opencore-picker.png)
 
 1. [BIOS settings](docs/01-bios.md), with screenshots of every page
 2. [USB installer](docs/02-usb-installer.md)
