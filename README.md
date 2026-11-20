@@ -54,7 +54,7 @@ A DVI-to-HDMI adapter or cable is fine.
 | CPU power management (XCPM), temperatures | ✅ |
 | iCloud sign-in | ✅ |
 | iMessage / FaceTime | not tested |
-| Wake from USB keyboard | not tested with a real keyboard |
+| Wake from sleep with a USB keyboard | ✅ |
 | Wi-Fi / Bluetooth | ❌ no compatible hardware in this PC |
 
 ## Versions

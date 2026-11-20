@@ -54,6 +54,10 @@ Sleep needs the **DPLL fix**. It is already enabled in this EFI by `-igfxdpllfix
 
 After a CPU swap, the `pmset` values were found reset (`hibernatemode 3`, `standby 1`). Check `pmset -g` after any big hardware change.
 
+## Waking from sleep
+
+A key press on a USB keyboard wakes the machine fully from sleep, with the display on. In the log this shows as `Wake from Normal Sleep … due to … HID Activity`. It needs `Resume By USB Device = Enabled` in the BIOS and the `acpi-wake-type` property on the USB controller, which is already in this EFI.
+
 ## Wake-on-LAN
 
 Wake-on-LAN works from sleep (about 4 seconds to wake) and from shutdown, also after a warm restart of macOS. Three things make it work:
