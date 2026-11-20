@@ -2,7 +2,7 @@
 
 The board uses MSI Click BIOS 5, version **`E7996IMS.2H0`** (2018-06-16). Other versions may name or place things a little differently.
 
-- **Del** opens the BIOS.
+- **Del** opens the BIOS. If it opens in EZ Mode, press **F7** for Advanced mode. On this board the top tabs are *System Status, Advanced, Overclocking, M-Flash, Security, Boot, Save & Exit*; on other MSI boards the same menus sit under *Settings* and *OC*.
 - **F11** opens the one-time boot menu.
 - In the BIOS, the arrow keys switch tabs, **Enter** opens a setting, **Esc** goes back, and **F10** saves and exits.
 
@@ -30,8 +30,8 @@ Settings marked **required** are needed by macOS. The rest are what the referenc
 | | Resume By USB Device | Enabled | wake from USB keyboard/mouse |
 | | Resume By RTC Alarm, PS/2 | Disabled | |
 | Overclocking → CPU Features | Intel Virtualization Tech | Enabled | |
-| | Intel VT-D Tech | **Disabled** | required (or keep `DisableIoMapper`) |
-| | CFG Lock | **Disabled** | recommended, gives native power management without patching |
+| | Intel VT-D Tech | **Disabled** | recommended; the config also sets `DisableIoMapper` |
+| | CFG Lock | **Disabled** | recommended; with it disabled the `AppleXcpmCfgLock` quirk is not needed (see [config](06-config-explained.md#quirks-that-differ-from-a-blank-config)) |
 | | Intel C-State | Auto | |
 | | C1E Support | Disabled | |
 | | Package C State Limit | Auto | |

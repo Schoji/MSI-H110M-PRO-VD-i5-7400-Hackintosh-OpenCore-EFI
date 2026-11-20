@@ -14,7 +14,7 @@ The `config.plist` in this repo has **placeholder** identifiers. OpenCore will b
 
 ## Why iMac19,1
 
-This build drives the display from the Intel HD 630, and macOS 15 Sequoia has to support the model. The Kaby Lake iMacs (`iMac18,x`) are not supported by Sequoia. `iMac19,1` is the oldest iMac that Sequoia supports and that also uses the Intel iGPU, so it is the usual choice for a Kaby Lake desktop with no graphics card.
+macOS 15 Sequoia has to support the model. The Kaby Lake iMacs (`iMac18,x`) are not supported by Sequoia, and `iMac19,1` (2019, 8th/9th gen Intel) is the oldest iMac that is. It has an Intel iGPU too, so the iGPU framebuffer works with it; this build drives the display from the HD 630 with the Kaby Lake framebuffer set in `DeviceProperties`.
 
 Sequoia is also the last macOS version for `iMac19,1`. See [Post-install](05-post-install.md#updates).
 
@@ -33,6 +33,7 @@ xattr -c macserial && chmod +x macserial
 Linux:
 
 ```bash
+chmod +x macserial.linux
 ./macserial.linux -m iMac19,1 -n 1
 ```
 

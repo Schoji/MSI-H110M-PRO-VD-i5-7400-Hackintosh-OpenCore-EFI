@@ -55,7 +55,7 @@ A DVI-to-HDMI adapter or cable is fine.
 | WhateverGreen | 1.7.2 + DPLL fix ([release](https://github.com/Schoji/WhateverGreen/releases/tag/v1.7.2-dpllfix)) |
 | VirtualSMC + SMCProcessor + SMCSuperIO | 1.3.8 |
 | AppleALC | 1.9.8 |
-| RealtekRTL8111 | 2.5.0 + Wake-on-LAN patch |
+| RealtekRTL8111 | 2.5.0 + Wake-on-LAN patch (the bundle reports `2.5.0d4`, as does upstream v2.5.0) |
 | RestrictEvents | 1.1.6 |
 
 ## Guide
@@ -72,7 +72,7 @@ A DVI-to-HDMI adapter or cable is fine.
 
 1. Set up the BIOS as on the [BIOS page](docs/01-bios.md).
 2. Generate your own `SystemSerialNumber`, `MLB`, `SystemUUID` and `ROM`.
-3. Set `ScanPolicy` to `0` on the USB stick.
+3. Set `ScanPolicy` to `0` on the USB stick, and press Space in the picker to see the recovery.
 4. Boot the Sequoia recovery (`Mac-937A206F2EE63C01`), install, and copy the EFI to the SSD.
 
 ## Repo layout
@@ -87,7 +87,7 @@ images/bios/         BIOS screenshots
 ## Before you use it
 
 - The serial numbers in `config.plist` are **placeholders**. Generate your own, as in [docs/03](docs/03-smbios.md).
-- This EFI was built for and tested on this exact board, CPU and USB layout. On different hardware, at least the USB map and the iGPU properties will need changes.
+- This EFI was built for and tested on this exact board, CPU and USB layout. On different hardware, at least the USB map and the iGPU properties will need changes. The USB map only applies to SMBIOS `iMac19,1`; if you change the model, change `USBMap.kext` too.
 - The reference machine was installed through a Linux virtual machine with the SSD passed through, because of a faulty GPU. The USB installer path in the guide uses the same EFI and recovery image, but has not been run end to end on this machine. See [docs/04](docs/04-install.md).
 
 ## Credits

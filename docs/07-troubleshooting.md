@@ -18,7 +18,7 @@ Problems that came up while building this machine, roughly in the order they app
 - a `device-id` spoof;
 - injecting the retail VBIOS as `ATY,bin_image`.
 
-**Solution:** the card was removed, and the build uses the iGPU. Note that Polaris cards (RX 4xx/5xx) do not work in macOS 26 Tahoe at all, so check your GPU against the target macOS first.
+**Solution:** the card was removed, and the build uses the iGPU. Check any graphics card against the target macOS version first: support for older AMD cards is shrinking with each release.
 
 ## iGPU: framebuffer up, but the monitor stays black
 
@@ -79,6 +79,10 @@ The fix is already in this EFI: `EFI/BOOT/.contentVisibility` containing `Disabl
 
 - On a **10/100 switch** the RTL8111H driver in autoselect mode never brought the link up. Forcing 100baseTX full-duplex worked. Use [netkeeper](../extras/README.md#netkeeper-link-fallback-for-10100-switches), or a gigabit switch.
 - On a **gigabit switch** autoselect gives 1000baseT with no extra steps.
+- **Stuck at 100 Mbit/s on a gigabit switch:** check whether a fixed speed was saved in macOS with `networksetup -getMedia Ethernet`. A `networksetup -setMedia Ethernet 100baseTX full-duplex` from earlier tests is stored permanently and applied at every boot. Undo it with:
+  ```bash
+  sudo networksetup -setMedia Ethernet autoselect
+  ```
 
 ## BIOS settings and pmset suddenly back to defaults
 
@@ -106,6 +110,7 @@ If it keeps happening, check that serial, MLB, ROM and the network card did not 
 ```bash
 system_profiler SPHardwareDataType
 nvram 4D1EDE05-38C7-4A6A-9CC6-4BCCA8B38C14:MLB
+nvram 4D1EDE05-38C7-4A6A-9CC6-4BCCA8B38C14:ROM
 ioreg -l | grep IOBuiltin
 ```
 
@@ -119,6 +124,6 @@ pmset -g log | grep -E "Sleep|Wake|DarkWake" | tail -20
 # boot-args and loaded kexts
 nvram boot-args
 kmutil showloaded --list-only 2>/dev/null | grep -v com.apple
-# mount the EFI partition of the internal SSD
+# mount the EFI partition of the internal SSD (check the disk number with: diskutil list)
 sudo diskutil mount disk0s1
 ```

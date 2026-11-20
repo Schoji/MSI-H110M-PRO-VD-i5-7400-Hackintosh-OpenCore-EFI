@@ -19,7 +19,7 @@ You can make the stick on macOS, Linux or Windows.
 ## 1. Download the Sequoia recovery
 
 ```bash
-cd OpenCore-1.0.8-RELEASE/Utilities/macrecovery
+cd OpenCore-1.0.8-RELEASE/Utilities/macrecovery    # wherever you unpacked the zip
 python3 macrecovery.py -b Mac-937A206F2EE63C01 -m 00000000000000000 download
 ```
 
@@ -55,7 +55,7 @@ OPENCORE/
 
 ## 4. Let OpenCore see the stick
 
-The `config.plist` in this repo is the one used every day from the internal SSD. Its `ScanPolicy` (`17761539`) shows only APFS volumes and EFI system partitions on internal SATA, NVMe and PCI drives. USB devices and the recovery image are hidden, so the picker would not show the recovery on the stick.
+The `config.plist` in this repo is the one used every day from the internal SSD. Its `ScanPolicy` (`17761539`) shows only APFS volumes and EFI system partitions on internal SATA/SAS/SCSI/NVMe/PCI drives. USB devices and the recovery image are hidden, so the picker would not show the recovery on the stick.
 
 **On the stick only**, set `ScanPolicy` to `0`, which shows everything:
 
@@ -64,6 +64,8 @@ plutil -replace Misc.Security.ScanPolicy -integer 0 /Volumes/OPENCORE/EFI/OC/con
 ```
 
 In ProperTree, the key is `Misc → Security → ScanPolicy`, and the value should be `0` (number). This is exactly the difference between the rescue stick and the internal EFI on the reference machine.
+
+The recovery still does not show up in the picker by default, because `HideAuxiliary` is on. Press **Space** in the picker to show it (see [4. Installation](04-install.md#1-boot-the-stick)).
 
 ## 5. Check before you boot
 

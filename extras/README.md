@@ -13,7 +13,11 @@ macOS's own idle sleep caused two problems on this build:
 
 You only need this if you want Wake-on-LAN, or if you use the machine over SSH. Without it, the normal Energy settings in System Settings work.
 
+Run from the `extras` folder of this repo:
+
 ```bash
+cd extras
+sudo mkdir -p /usr/local/bin
 sudo cp sleepkeeper/sleepkeeper.sh /usr/local/bin/ && sudo chmod 755 /usr/local/bin/sleepkeeper.sh
 sudo mkdir -p /usr/local/etc && sudo cp sleepkeeper/sleepkeeper.conf /usr/local/etc/
 sudo cp sleepkeeper/local.sleepkeeper.plist /Library/LaunchDaemons/
@@ -32,6 +36,8 @@ With a gigabit switch you do not need this. On a 10/100 switch the RealtekRTL811
 - once an hour on a forced link it tries autoselect again, and stays there if the link comes up. A short cable or switch outage can therefore never leave a gigabit link stuck at 100 Mbit/s for long. On a real 10/100 switch this costs a 30-second network outage per hour.
 
 ```bash
+cd extras
+sudo mkdir -p /usr/local/bin
 sudo cp netkeeper/netkeeper.sh /usr/local/bin/ && sudo chmod 755 /usr/local/bin/netkeeper.sh
 sudo cp netkeeper/local.netkeeper.plist /Library/LaunchDaemons/
 sudo chown root:wheel /Library/LaunchDaemons/local.netkeeper.plist
@@ -53,7 +59,7 @@ sudo launchctl bootstrap system /Library/LaunchDaemons/local.netkeeper.plist
 
 **To build it yourself:**
 
-1. Get the driver source, version 2.5.0.
+1. Get the driver source at tag `v2.5.0` (commit `0e6718e`) of Mieze/RTL8111_driver_for_OS_X. Its bundle version is `2.5.0d4`.
 2. Add [MacKernelSDK](https://github.com/acidanthera/MacKernelSDK) next to the project, as the driver's README describes.
 3. Apply the patch:
    ```bash

@@ -8,9 +8,9 @@
 
 1. Plug the stick into a **rear USB port**.
 2. Turn on the PC and press **F11** repeatedly until the boot menu appears.
-3. Choose the entry for your stick that starts with **`UEFI:`**, for example `UEFI: SanDisk ..., Partition 1`.
+3. Choose the entry for your stick that starts with **`UEFI:`**, for example `UEFI: SanDisk ..., Partition 1`. A stick formatted on macOS has a hidden EFI partition first, so the right one may be `Partition 2`: pick the partition that holds the `EFI` folder.
 
-The OpenCore picker appears after a few seconds. Pick the recovery entry, usually named **macOS Base System** or **Install macOS Sequoia** (the exact label can differ), and press **Enter**.
+The OpenCore picker appears after a few seconds. **Press Space** to show auxiliary entries: this config hides recovery entries (`HideAuxiliary`), and the recovery on the stick counts as one. Then pick the recovery entry, usually named **macOS Base System** or **Install macOS Sequoia** (the exact label can differ), and press **Enter**.
 
 The Apple logo and a progress bar follow. Recovery takes a minute or two to start.
 

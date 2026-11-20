@@ -25,7 +25,7 @@ The two SSDTs are Dortania's prebuilt ones for Skylake and newer desktops:
 
 | File | What it does |
 |---|---|
-| `SSDT-PLUG-DRTNIA.aml` | Enables `X86PlatformPlugin`, which gives native CPU power management (XCPM). |
+| `SSDT-PLUG-DRTNIA.aml` | Makes sure `X86PlatformPlugin` loads, for native CPU power management (XCPM). On macOS 12.3 and newer it loads by default anyway, so this SSDT is belt and braces. |
 | `SSDT-EC-USBX-DESKTOP.aml` | Adds a fake embedded controller and USB power properties, which macOS expects. |
 
 There are no ACPI patches.
@@ -76,7 +76,7 @@ The monitor is on framebuffer 1, port 6.
 
 ## USB map
 
-The H110 has 10 USB 2.0 ports and 4 USB 3.0 ports, which is 14 in total, below the macOS limit of 15. So `XhciPortLimit` is off, and `USBMap.kext` lists all of them.
+The H110 controller exposes 10 USB 2.0 ports (HS01-HS10), and 4 of them also have a USB 3.0 side (SS01-SS04). That is 14 port entries, below the macOS limit of 15. So `XhciPortLimit` is off, and `USBMap.kext` lists all of them. The map is tied to the `iMac19,1` model.
 
 | ACPI name | Connector | Where |
 |---|---|---|
