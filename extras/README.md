@@ -27,8 +27,9 @@ sudo pmset -a sleep 0        # sleepkeeper does the sleeping now
 With a gigabit switch you do not need this. On a 10/100 switch the RealtekRTL8111 driver in autoselect mode never brought the link up on this board, while a link forced to 100baseTX full-duplex worked. `netkeeper` checks `en0` every 10 seconds:
 
 - in autoselect mode with the link up, it does nothing;
-- after about 20 seconds without a link, it forces 100baseTX and renews DHCP;
-- if the forced link is down, it goes back to autoselect.
+- after 60 seconds without a link, it forces 100baseTX and renews DHCP;
+- if the forced link is down, it goes back to autoselect;
+- once an hour on a forced link it tries autoselect again, and stays there if the link comes up. A short cable or switch outage can therefore never leave a gigabit link stuck at 100 Mbit/s for long. On a real 10/100 switch this costs a 30-second network outage per hour.
 
 ```bash
 sudo cp netkeeper/netkeeper.sh /usr/local/bin/ && sudo chmod 755 /usr/local/bin/netkeeper.sh
