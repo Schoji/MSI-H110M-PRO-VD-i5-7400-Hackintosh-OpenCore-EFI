@@ -1,5 +1,16 @@
 # Hackintosh: MSI H110M PRO-VD + i5-7400 (macOS 15 Sequoia)
 
+[![macOS](https://img.shields.io/badge/macOS-15.8.3%20Sequoia-000000?logo=apple&logoColor=white)](docs/04-install.md)
+[![OpenCore](https://img.shields.io/badge/OpenCore-1.0.8-2a6db2)](https://github.com/acidanthera/OpenCorePkg/releases/tag/1.0.8)
+[![SMBIOS](https://img.shields.io/badge/SMBIOS-iMac19%2C1-7d7d7d?logo=apple&logoColor=white)](docs/03-smbios.md)
+[![CPU](https://img.shields.io/badge/CPU-i5--7400%20Kaby%20Lake-0071c5?logo=intel&logoColor=white)](#hardware)
+[![iGPU](https://img.shields.io/badge/iGPU-HD%20630-0071c5?logo=intel&logoColor=white)](docs/06-config-explained.md#intel-hd-630-pciroot0x0pci0x20x0)
+[![Board](https://img.shields.io/badge/board-MSI%20H110M%20PRO--VD-e2231a?logo=msi&logoColor=white)](#hardware)
+[![Sleep](https://img.shields.io/badge/sleep%20%2F%20wake-working-2ea44f)](docs/07-troubleshooting.md#sleep-machine-check-on-wake)
+[![Wake-on-LAN](https://img.shields.io/badge/Wake--on--LAN-working-2ea44f)](docs/05-post-install.md#wake-on-lan)
+[![WhateverGreen](https://img.shields.io/badge/WhateverGreen-1.7.2%20%2B%20DPLL%20fix-orange)](https://github.com/Schoji/WhateverGreen/releases/tag/v1.7.2-dpllfix)
+[![License](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
+
 This repo contains a working OpenCore EFI and a step-by-step guide for running macOS 15 Sequoia on an **MSI H110M PRO-VD** with an **Intel Core i5-7400** and its **HD 630** iGPU. No graphics card is used.
 
 Sleep and Wake-on-LAN work. On this platform, sleep only works thanks to a fix for WhateverGreen developed for this build (`-igfxdpllfix`).
